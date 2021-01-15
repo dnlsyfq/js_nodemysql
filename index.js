@@ -19,11 +19,48 @@ con.connect(function(err){
     */
 
 
-    var sql = "CREATE TABLE customers(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), email VARCHAR(255));" ;
-
+    // var sql = "CREATE TABLE customers(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), email VARCHAR(255));" ;
+    // var sql = "ALTER TABLE customers ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY;" ;
+    // var sql = "INSERT INTO customers(name,email) VALUES('Dan','dan90@com'); ";
+    /*
     con.query(sql,function(err,result){
         if (err) throw err;
         console.log("Table Created");
+    })
+
+     */
+
+    /*
+    var sql = "INSERT INTO customers(name,email) VALUES ?";
+    var values = [
+        ['Tim','tim@tim.com'],
+        ['Tina','tina@tina.com'],
+        ['Laura','laura@laura.com']
+    ]
+
+    con.query(sql,[values],(err,result)=>{
+        if (err) throw err;
+        console.log(`Record Inserted: ${result.affectedRows}`);
+    });
+
+
+     */
+
+    /*
+    var sql = "SELECT * FROM customers";
+    con.query(sql,function (err,result,fields){
+        if(err) throw err;
+        console.log(result[0]['email']);
+    });
+
+     */
+
+    var sql = "SELECT * FROM customers";
+    con.query(sql,function(err,result,fields){
+        if(err) throw err;
+        for(let i=0; i < result.length; i++){
+            console.log(result[i].name);
+        }
     })
 
 });
