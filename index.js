@@ -55,6 +55,7 @@ con.connect(function(err){
 
      */
 
+    /*
     var sql = "SELECT * FROM customers";
     con.query(sql,function(err,result,fields){
         if(err) throw err;
@@ -62,6 +63,31 @@ con.connect(function(err){
             console.log(result[i].name);
         }
     })
+
+
+     */
+
+    /*
+    var sql = "SELECT name,id FROM customers";
+    con.query(sql,function(err,result,fields){
+        if(err) throw err;
+        console.log(fields[0].name);
+        console.log(result[0].name);
+    })
+
+
+     */
+
+    var name_search = 't%';
+    var id_search = 1;
+    var sql = "SELECT * FROM customers WHERE name LIKE ? or id = ? ";
+    con.query(sql,[name_search, id_search],function(err,result,fields){
+        if (err) throw err;
+        console.log(result);
+    })
+
+
+
 
 });
 
